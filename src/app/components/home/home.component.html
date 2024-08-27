@@ -1,0 +1,7 @@
+<div class="container">
+    <input type="text" [ngModel]="search" (ngModelChange)="this.searchGameByName($event)" placeholder="Digite o nome do jogo aqui" />
+
+    {{ this.search }}
+
+    <app-card [gamesArray]="games"></app-card>
+</div>

@@ -1,0 +1,50 @@
+<div [style.display]="modalVisibility ? 'flex' : 'none'" class="modal">
+    <div class="modal__content">
+        @if (gameInfo) {
+        <div class="modal__content__body">
+            <img [src]="gameInfo.thumbnail" alt="Game Image">
+
+            <h3>{{ gameInfo.title }}</h3>
+
+            <div class="divisor"></div>
+
+            @if (!gameInfo.minimum_system_requirements || !gameInfo.minimum_system_requirements.processor) {
+            <h4>Sem informações de requisitos minimos</h4>
+            }
+            @else {
+            <h4>Requisitos minimos</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Requirement</th>
+                        <th>Minimun</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th>Processador</th>
+                        <td>{{ gameInfo.minimum_system_requirements.processor }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Placa de vídeo</th>
+                        <td>{{ gameInfo.minimum_system_requirements.graphics }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Memória Ram</th>
+                        <td>{{ gameInfo.minimum_system_requirements.memory }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            }
+        </div>
+        }
+
+        <div class="modal__content__footer">
+            <span (click)="handleVisibility()">Close</span>
+        </div>
+    </div>
+</div>
